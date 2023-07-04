@@ -3,11 +3,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import RootLayout from "./layouts/RootLayout";
 
 const router = createBrowserRouter([
-  { index: true, element: <HomePage /> },
-  { path: "/about", element: <AboutPage /> },
-  { path: "/contact", element: <ContactPage /> },
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "/about", element: <AboutPage /> },
+      { path: "/contact", element: <ContactPage /> },
+    ],
+  },
 ]);
 const App = () => {
   return <RouterProvider router={router}></RouterProvider>;
